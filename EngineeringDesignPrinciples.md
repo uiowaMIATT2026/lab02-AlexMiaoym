@@ -1,0 +1,11 @@
+Step 1: Build the environment
+Set up the CMake environment and make sure the ITK package is properly configured and usable.
+
+Step 2: Edit the C++ file
+Implement the registration part of the code. Test it using two random images to ensure the program runs correctly.
+
+Step 3: Verify the code
+Use a specific test image (e.g., a circle image) to verify that the algorithm works as expected.
+
+------
+
