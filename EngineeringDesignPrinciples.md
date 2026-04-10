@@ -16,6 +16,10 @@ lab2-build
     -CMakeLists.txt
 
 make this folder structure
-    
+
+-------------
+*Step 2.
+According to the ITK second Book, Find the example/ImageRegistration.cxx file
+ 
 
 
