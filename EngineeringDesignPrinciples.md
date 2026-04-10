@@ -19,7 +19,12 @@ make this folder structure
 
 -------------
 *Step 2.
-According to the ITK second Book, Find the example/ImageRegistration.cxx file
- 
+1) According to the ITK second Book, Find the example/ImageRegistration.cxx file
+2) Implant the Code, I Can run the registration program now
+ ./src/ece5940_lab02 $DATA/Circle.png $DATA/Input.png out.png
+ I need read the code and unserstand the code. (Need add some resriction)
+
+
+
 
 
