@@ -7,5 +7,15 @@ Implement the registration part of the code. Test it using two random images to 
 Step 3: Verify the code
 Use a specific test image (e.g., a circle image) to verify that the algorithm works as expected.
 
-------
+-------------
+*Step 1.
+According to the hw tructure, 
+
+lab2-build
+    -src(register.txt)
+    -CMakeLists.txt
+
+make this folder structure
+    
+
 

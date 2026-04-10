@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/cmake_install.cmake",
+		"/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
