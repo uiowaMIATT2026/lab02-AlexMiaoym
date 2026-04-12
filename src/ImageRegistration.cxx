@@ -121,7 +121,7 @@ int main(int argc, char * argv[])
   double pixelWidth = fixedImage->GetLargestPossibleRegion().GetSize()[0];
 
   // Set Spacing for fixed image
-  FixedImageType::SpacingType spacing; // Set Spacing
+  FixedImageType::SpacingType fixedSpacing;
   fixedSpacing[0] = 30.0/pixelWidth; // fixed image 30mm diameter
   fixedSpacing[1] = 30.0/pixelWidth;
   fixedImage->SetSpacing(fixedSpacing);
@@ -256,7 +256,6 @@ int main(int argc, char * argv[])
   resampler->SetTransform(outputCompositeTransform);
 
   // Match output extent, origin, spacing, direction, and out-of-bounds fill to the fixed image.
-  const FixedImageType::Pointer fixedImage = fixedImageReader->GetOutput();
   resampler->SetSize(fixedImage->GetLargestPossibleRegion().GetSize());
   resampler->SetOutputOrigin(fixedImage->GetOrigin());
   resampler->SetOutputSpacing(fixedImage->GetSpacing());
