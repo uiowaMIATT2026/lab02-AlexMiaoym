@@ -24,6 +24,8 @@ make this folder structure
  ./src/ece5940_lab02 $DATA/Circle.png $DATA/Input.png out.png
  I need read the code and unserstand the code. (Need add some resriction)
 
+3) 
+
 
 
 
