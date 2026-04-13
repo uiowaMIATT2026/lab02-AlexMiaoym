@@ -123,44 +123,6 @@ depend:
 	cd /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-src/CMakeFiles/ece5940_lab02.dir/rule:
-	cd /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/ece5940_lab02.dir/rule
-.PHONY : src/CMakeFiles/ece5940_lab02.dir/rule
-
-# Convenience name for target.
-ece5940_lab02: src/CMakeFiles/ece5940_lab02.dir/rule
-.PHONY : ece5940_lab02
-
-# fast build rule for target.
-ece5940_lab02/fast:
-	cd /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ece5940_lab02.dir/build.make src/CMakeFiles/ece5940_lab02.dir/build
-.PHONY : ece5940_lab02/fast
-
-ImageRegistration.o: ImageRegistration.cxx.o
-.PHONY : ImageRegistration.o
-
-# target to build an object file
-ImageRegistration.cxx.o:
-	cd /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ece5940_lab02.dir/build.make src/CMakeFiles/ece5940_lab02.dir/ImageRegistration.cxx.o
-.PHONY : ImageRegistration.cxx.o
-
-ImageRegistration.i: ImageRegistration.cxx.i
-.PHONY : ImageRegistration.i
-
-# target to preprocess a source file
-ImageRegistration.cxx.i:
-	cd /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ece5940_lab02.dir/build.make src/CMakeFiles/ece5940_lab02.dir/ImageRegistration.cxx.i
-.PHONY : ImageRegistration.cxx.i
-
-ImageRegistration.s: ImageRegistration.cxx.s
-.PHONY : ImageRegistration.s
-
-# target to generate assembly for a file
-ImageRegistration.cxx.s:
-	cd /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ece5940_lab02.dir/build.make src/CMakeFiles/ece5940_lab02.dir/ImageRegistration.cxx.s
-.PHONY : ImageRegistration.cxx.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -170,10 +132,6 @@ help:
 	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ece5940_lab02"
-	@echo "... ImageRegistration.o"
-	@echo "... ImageRegistration.i"
-	@echo "... ImageRegistration.s"
 .PHONY : help
 
 

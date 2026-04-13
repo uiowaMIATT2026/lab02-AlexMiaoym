@@ -1,5 +1,10 @@
 /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/CMakeFiles/edit_cache.dir
 /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/CMakeFiles/rebuild_cache.dir
-/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/CMakeFiles/ece5940_lab02.dir
 /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/CMakeFiles/edit_cache.dir
 /Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/CMakeFiles/rebuild_cache.dir
+/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/register/CMakeFiles/register.dir
+/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/register/CMakeFiles/edit_cache.dir
+/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/register/CMakeFiles/rebuild_cache.dir
+/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/createimage/CMakeFiles/createimage.dir
+/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/createimage/CMakeFiles/edit_cache.dir
+/Users/mym/yuamiao/eceproj/lab02-AlexMiaoym/build/src/createimage/CMakeFiles/rebuild_cache.dir

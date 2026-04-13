@@ -124,17 +124,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ece5940_lab02
+# Target rules for targets named register
 
 # Build rule for target.
-ece5940_lab02: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ece5940_lab02
-.PHONY : ece5940_lab02
+register: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 register
+.PHONY : register
 
 # fast build rule for target.
-ece5940_lab02/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ece5940_lab02.dir/build.make src/CMakeFiles/ece5940_lab02.dir/build
-.PHONY : ece5940_lab02/fast
+register/fast:
+	$(MAKE) $(MAKESILENT) -f src/register/CMakeFiles/register.dir/build.make src/register/CMakeFiles/register.dir/build
+.PHONY : register/fast
+
+#=============================================================================
+# Target rules for targets named createimage
+
+# Build rule for target.
+createimage: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 createimage
+.PHONY : createimage
+
+# fast build rule for target.
+createimage/fast:
+	$(MAKE) $(MAKESILENT) -f src/createimage/CMakeFiles/createimage.dir/build.make src/createimage/CMakeFiles/createimage.dir/build
+.PHONY : createimage/fast
 
 # Help Target
 help:
@@ -145,7 +158,8 @@ help:
 	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ece5940_lab02"
+	@echo "... createimage"
+	@echo "... register"
 .PHONY : help
 
 
