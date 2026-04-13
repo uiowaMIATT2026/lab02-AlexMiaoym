@@ -9,7 +9,7 @@ Use a specific test image (e.g., a circle image) to verify that the algorithm wo
 
 -------------
 *Step 1.
-According to the hw tructure, 
+According to the hw structure, 
 
 lab2-build
     -src(register.txt)
@@ -27,6 +27,16 @@ make this folder structure
 -------------
 *Step 3.
 1) add some restriction for fixed image and moving image
+write the code to creat the image.
+
+folder structure
+lab2-build
+    -src
+        - createimage(CreateImage.cxx)
+        - register(ImageRegistration.cxx)
+    -CMakeLists.txt
+
+2) modify the register.cxx to fit the creating image.
 
 
 

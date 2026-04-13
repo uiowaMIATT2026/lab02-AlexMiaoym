@@ -52,6 +52,27 @@ public:
   }
 };
 
+namespace
+{
+// Same physical frame as CreateImage.cxx (spacing 0.5 mm; origin so grid center is cx, cy).
+void
+ApplyCreateImageGeometry(itk::Image<float, 2> * img, double cx, double cy)
+{
+  constexpr double kSpacingMm = 0.5;
+  constexpr unsigned int Dimension = 2;
+  const itk::Size<Dimension> sz = img->GetLargestPossibleRegion().GetSize();
+  const double               hx = 0.5 * static_cast<double>(sz[0] - 1);
+  const double               hy = 0.5 * static_cast<double>(sz[1] - 1);
+  itk::Image<float, Dimension>::SpacingType sp;
+  sp.Fill(kSpacingMm);
+  img->SetSpacing(sp);
+  itk::Image<float, Dimension>::PointType org;
+  org[0] = cx - hx * kSpacingMm;
+  org[1] = cy - hy * kSpacingMm;
+  img->SetOrigin(org);
+}
+} // namespace
+
 int main(int argc, char * argv[])
 {
   if (argc < 4)
@@ -110,43 +131,39 @@ int main(int argc, char * argv[])
   fixedImageReader->SetFileName(argv[1]);
   movingImageReader->SetFileName(argv[2]);
 
-  // add some restriction for imag1 and imag2
-  //img1.png:  30mm diameter centered at 50mm, 50mm
-  //img2.png:  60mm diameter centered at 200mm,200mm
+  // PNG readers usually do not restore spacing/origin. Apply the same physical frame as
+  // CreateImage: spacing 0.5 mm (1 mm per 2 pixels); origin so grid center is (cx, cy) mm:
+  //   origin = center - 0.5 * (size/2 - 0.5) per axis = center - 0.25 * (size - 1)  [same as CreateImage]
+  // Default pair (change constants if your createimage centers differ):
+  //   fixed:  createimage ... 30 50   -> (50, 50) mm
+  //   moving: createimage ... 60 200   -> (200, 200) mm
   fixedImageReader->Update();
   movingImageReader->Update();
 
   auto fixedImage = fixedImageReader->GetOutput();
   auto movingImage = movingImageReader->GetOutput();
 
-  // get the number of pixels
-  double fixedPixelWidth = fixedImage->GetLargestPossibleRegion().GetSize()[0];
-  double movingPixelWidth = movingImage->GetLargestPossibleRegion().GetSize()[0];
+  // Centers (mm) must match the arguments you passed to createimage for each phantom.
+  constexpr double kFixedCenterMm = 50.0;
+  constexpr double kMovingCenterMm = 200.0;
 
-  // Set Spacing for fixed image
-  FixedImageType::SpacingType fixedSpacing;
-  fixedSpacing[0] = 30.0/fixedPixelWidth; // fixed image 30mm diameter
-  fixedSpacing[1] = 30.0/fixedPixelWidth;
-  fixedImage->SetSpacing(fixedSpacing);
-  
-  FixedImageType::PointType fixedOrigin;
-  fixedOrigin[0] = 35.0; // centered at 50mm, 50mm
-  fixedOrigin[1] = 35.0; 
-  fixedImage->SetOrigin(fixedOrigin);
-
-  // Set Spacing for moving image
-  MovingImageType::SpacingType movingSpacing;
-  movingSpacing[0] = 60.0/movingPixelWidth; // moving image 60mm diameter
-  movingSpacing[1] = 60.0/movingPixelWidth;
-  movingImage->SetSpacing(movingSpacing);
-  
-  MovingImageType::PointType movingOrigin;
-  movingOrigin[0] = 100.0; // centered at 200mm,200mm
-  movingOrigin[1] = 100.0; 
-  movingImage->SetOrigin(movingOrigin);
+  ApplyCreateImageGeometry(fixedImage, kFixedCenterMm, kFixedCenterMm);
+  ApplyCreateImageGeometry(movingImage, kMovingCenterMm, kMovingCenterMm);
 
   registration->SetFixedImage(fixedImage);
   registration->SetMovingImage(movingImage);
+
+  // Mean squares over the full 512² grid is dominated by matching black (0) to black (0), so at
+  // T=(0,0) the cost looks tiny and the gradient ~0 even though the circles do not line up.
+  // Start near the correct translation: movingPoint = fixedPoint + T (ITK translation convention).
+  auto initialTransform = TransformType::New();
+  {
+    TransformType::ParametersType p(2);
+    p[0] = kMovingCenterMm - kFixedCenterMm;
+    p[1] = kMovingCenterMm - kFixedCenterMm;
+    initialTransform->SetParameters(p);
+  }
+  registration->SetInitialTransform(initialTransform);
 
   // Moving-image initial transform: start at zero translation (millimeters).
   auto movingInitialTransform = TransformType::New();
