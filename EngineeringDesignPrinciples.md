@@ -46,14 +46,24 @@ Algorithm
 1) Create Image
 command: createimage fixed.png diameter(mm)  center(mm)
 
+Set the image grid size to 512X512 pixels adn the physical spacing to 0.5 mm per pixel.
+
+Calculate the radius from the diameter and square it. 
+
+Save it to disk as a png.file
+
 
 2) Registration
 command: register fixed.png moving.png output.png
 
+Initialization: Load the "Fixed" and "Moving" images. Assign a physical coordinate system (0.5 mm spacing) to establish real-world alignment, which standard image files inherently lack.
 
+Component Setup: Wire together four core ITK tools: a TranslationTransform to shift the image, a MeanSquares metric to calculate the alignment error, Linear interpolators for sub-pixel accuracy, and a GradientDescent optimizer to drive the process.
 
+Initial Alignment: Apply a pre-calculated mathematical offset so the fixed and moving shapes initially overlap. Without this jump-start, the shapes wouldn't touch, the error gradient would be completely flat (comparing only black background pixels), and the optimizer would fail to move.
 
+Optimization Loop: The optimizer iteratively shifts the moving image down the metric's gradient. It evaluates the mean squares difference, adjusts its step size dynamically, and repeats until the error is minimized.
 
+Resampling: Combine the starting offset with the newly optimized translation. A resampler then warps the moving image, painting its pixels onto the fixed image's exact grid layout.
 
-
-
+Validation: Mathematically subtract the aligned moving image from the fixed image. The resulting difference map is saved to visually prove the success of the alignment.
