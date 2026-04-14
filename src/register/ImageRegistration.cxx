@@ -311,8 +311,7 @@ int main(int argc, char * argv[])
   difference->SetInput2(resampler->GetOutput());
 
   // Rescale difference to 0–255 for visualization; lower default fill to preserve contrast.
-  using RescalerType =
-    itk::RescaleIntensityImageFilter<FixedImageType, OutputImageType>;
+  using RescalerType = itk::RescaleIntensityImageFilter<FixedImageType, OutputImageType>;
 
   auto intensityRescaler = RescalerType::New();
 
@@ -325,7 +324,6 @@ int main(int argc, char * argv[])
   auto writer2 = WriterType::New();
   writer2->SetInput(intensityRescaler->GetOutput());
 
-
   // Optional: write post-registration difference image if path provided.
   if (argc > 4)
   {
@@ -335,7 +333,6 @@ int main(int argc, char * argv[])
 
   // Resample moving image with identity only (alignment before registration) for comparison.
   resampler->SetTransform(identityTransform);
-
 
   // Optional: write pre-registration difference image if path provided.
   if (argc > 5)

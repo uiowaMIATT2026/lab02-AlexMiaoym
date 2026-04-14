@@ -5,8 +5,8 @@
 #include <iostream>
 #include <string>
 
-int
-main(int argc, char * argv[])
+// input: imagename.png diameter_mm center_mm
+int main(int argc, char * argv[])
 {
   // createimage out.png DIAMETER CENTER        -> center (CENTER, CENTER) mm
   // createimage out.png DIAMETER CX CY         -> center (CX, CY) mm

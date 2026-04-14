@@ -38,6 +38,20 @@ lab2-build
 
 2) modify the register.cxx to fit the creating image.
 
+3) use the creating image to verfy the code.
+
+
+------------- 
+Algorithm
+1) Create Image
+command: createimage fixed.png diameter(mm)  center(mm)
+
+
+2) Registration
+command: register fixed.png moving.png output.png
+
+
+
 
 
 
