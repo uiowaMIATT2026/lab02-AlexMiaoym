@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>MIATT.lab02.yuamiao</category>
+  <title>ImageRegistration</title>
+  <description>Register two 2D images. img1.png: 30mm diameter centered at 50mm, 50mm. img2.png: 60mm diameter centered at 200mm, 200mm.</description>
+  <documentation-url></documentation-url>
+  <license></license>
+  <contributor>yuamiao</contributor>
+  <version>04.13.2026</version>
+
+  <parameters advanced="false">
+    <label>IO</label>
+    <description>Input/output parameters for image registration.</description>
+    
+    <image>
+      <name>fixedImage</name>
+      <label>Fixed Image</label>
+      <channel>input</channel>
+      <index>0</index>
+      <description>The fixed (target) input image.</description>
+    </image>
+
+    <image>
+      <name>movingImage</name>
+      <label>Moving Image</label>
+      <channel>input</channel>
+      <index>1</index>
+      <description>The moving (source) input image to be registered.</description>
+    </image>
+
+    <image type="scalar">
+      <name>outputImage</name>
+      <label>Output Image</label>
+      <channel>output</channel>
+      <index>2</index>
+      <description>The resulting registered image (e.g., out.png).</description>
+    </image>
+
+  </parameters>
+</executable>
